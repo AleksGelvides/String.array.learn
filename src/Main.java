@@ -10,12 +10,14 @@ public class Main {
         while (cycle){
             int i = 1;
             names[i] = scanner.nextLine();
-            if (names[i--].equals(names[i])){
+            if (names[i].equalsIgnoreCase(names[0])){
                 System.out.println("Имя уже занято");
                 names[i] = null;
-            } else
+            } else if (!(names[i].equalsIgnoreCase(names[0]))){
                 System.out.println("Успешно добавленно");
-            i++;
+                System.out.println(Arrays.toString(names));
+                break;
+            }
         }
     }
 }
