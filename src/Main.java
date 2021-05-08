@@ -2,22 +2,40 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
+    static int n = 0;
+    static String names[] = new String[10];
+    static String namePerson;
     public static void main(String[] args) {
-        String names[] = new String[10];
         Scanner scanner = new Scanner(System.in);
-        names[0] = "иван иванов";
-        boolean cycle = true;
-        while (cycle){
-            int i = 1;
-            names[i] = scanner.nextLine();
-            if (names[i].equalsIgnoreCase(names[0])){
-                System.out.println("Имя уже занято");
-                names[i] = null;
-            } else if (!(names[i].equalsIgnoreCase(names[0]))){
-                System.out.println("Успешно добавленно");
-                System.out.println(Arrays.toString(names));
+        boolean nextName = true;
+        while (nextName) {
+            System.out.println("Pleas enter you name: " + n);
+            namePerson = scanner.nextLine();
+            if (checkUserName() == true) {
+                System.out.println("okey");
+                n++;
+            } else if (checkUserName() == false) {
+                System.out.println("Rename please");}
+        }
+    }
+    public static boolean checkUserName(){
+        boolean checkName = true;
+        boolean report_checkUserName = true;
+        while (checkName){
+            if (names[0] == null){
+                System.out.println("Nice name: 1");
+                names[n] = namePerson;
+                break;
+            } else if (namePerson.equalsIgnoreCase(names[n-1])){ //Почему не работает ни преинкримент, не постинкримент
+                report_checkUserName = !report_checkUserName;
+                System.out.println("This name already used"); // При отработке этого сценария, показывается 2 раза подряд.
+                break;
+            } else if (!(namePerson.equalsIgnoreCase(names[n-1]))){
+                System.out.println("Nice name");
+                names[n] = namePerson;
                 break;
             }
         }
+        return report_checkUserName;
     }
 }
