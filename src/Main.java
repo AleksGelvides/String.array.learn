@@ -14,8 +14,8 @@ public class Main {
             if (checkUserName() == true) {
                 System.out.println("okey");
                 System.out.println("Ваше имя имеет длину " + namePerson.length() + " Символов");
-                namePerson.trim();
-                System.out.println("А без пробелов ваше имя занимает " + namePerson.length() + " символов");
+                String noProbel = namePerson.replace(" ", "");
+                System.out.println("А без пробелов ваше имя занимает " + noProbel.length() + " символов");
                 n++;
             } else if (checkUserName() == false) {
                 System.out.println("Rename please");}
